@@ -5,10 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
+    <title>Weather App</title>
     <script src="./script.js" defer></script>
 </head>
 <body>
-    
+    <div id="main">
+        <div class="search-section">
+            <form action="#">
+                <input id="search" type="text" placeholder="Enter city here...">
+                <button>Change weather</button>
+            </form>
+        </div>
+        <div class="current-weather">
+            <div class="current-weather-name">
+                London
+            </div>
+            <div class="current-weather-icon">
+                <img src="./icons/night.png">
+            </div>
+            <div class="current-weather-stats">
+                <div class="stats-temp">
+                    <div class="stats-title">
+                        Temp
+                    </div>
+                    <div class="stats-temp-number">
+                        25 C
+                    </div>
+                </div>
+                <div class="stats-feels-like">
+                    <div class="stats-title">
+                        Feels Like
+                    </div>
+                    <div class="stats-feels-like-number">
+                        21 C
+                    </div>
+                </div>
+                <div class="stats-wind">
+                    <div class="stats-title">
+                        Wind
+                    </div>
+                    <div class="stats-wind-number">
+                        30 km/h
+                    </div>
+                </div>
+                <div class="stats-pressure">
+                    <div class="stats-title">
+                        Pressure
+                    </div>
+                    <div class="stats-pressure-number">
+                        1010pa
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="forecast">
+            Forecast
+        </div>
+    </div>
 </body>
 </html>
+
+<!--
+    <a target="_blank" href="https://icons8.com/icon/51463/night">Night</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    https://icons8.com/icon/set/weather/ultraviolet
+!-->

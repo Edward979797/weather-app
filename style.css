@@ -1,0 +1,91 @@
+html, body {
+    font-family: 'PT Serif';
+    height: 100%;
+    margin: 0;
+    overflow: scroll;
+    padding: 0;
+    width: 100%;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.search-section {
+    align-items: center;
+    background-color: aliceblue;
+    display: flex;
+    min-height: 100px;
+    justify-content: center;
+}
+
+.current-weather {
+    align-items: center;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 600px;
+}
+
+.current-weather-name {
+    color: rgb(89, 67, 231);
+    font-size: 50px;
+    letter-spacing: 2px;
+    margin-top: 50px;
+}
+
+.current-weather-icon {
+    align-items: center;
+    display: flex;
+    height: 400px;
+    justify-content: center;
+}
+
+.current-weather-icon img {
+    height: 120px;
+    margin-bottom: 50px;
+    width: 120px;
+}
+
+.current-weather-stats {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+    height: 300px;
+    width: 100%;
+}
+
+.stats-temp,
+.stats-feels-like,
+.stats-wind,
+.stats-pressure {
+    align-items: center;
+    border: 0.5px solid indigo;
+    box-sizing: border-box;
+    color: slategray;
+    display: grid;
+    font-size: 22px;
+    height: 100%;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.stats-title {
+    color: rgb(107, 161, 214);
+}
+
+.forecast {
+    align-items: center;
+    background-color: blueviolet;
+    min-height: 300px;
+    justify-content: center;
+}
+
