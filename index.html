@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet">
     <title>Weather App</title>
     <script src="./script.js" defer></script>
 </head>
@@ -16,15 +13,18 @@
         <div class="search-section">
             <form action="#">
                 <input id="search" type="text" placeholder="Enter city here...">
-                <button>Change weather</button>
+                <button>Go!</button>
             </form>
         </div>
         <div class="current-weather">
             <div class="current-weather-name">
-                London
+                
             </div>
             <div class="current-weather-icon">
-                <img src="./icons/night.png">
+                <img id="icon-image">
+            </div>
+            <div class="current-weather-desc">
+                
             </div>
             <div class="current-weather-stats">
                 <div class="stats-temp">
@@ -32,7 +32,7 @@
                         Temp
                     </div>
                     <div class="stats-temp-number">
-                        25 C
+
                     </div>
                 </div>
                 <div class="stats-feels-like">
@@ -40,7 +40,7 @@
                         Feels Like
                     </div>
                     <div class="stats-feels-like-number">
-                        21 C
+
                     </div>
                 </div>
                 <div class="stats-wind">
@@ -48,7 +48,7 @@
                         Wind
                     </div>
                     <div class="stats-wind-number">
-                        30 km/h
+
                     </div>
                 </div>
                 <div class="stats-pressure">
@@ -56,13 +56,67 @@
                         Pressure
                     </div>
                     <div class="stats-pressure-number">
-                        1010pa
+
                     </div>
                 </div>
             </div>
         </div>
-        <div class="forecast">
-            Forecast
+        <div class="forecast-section">
+            <div id="soon-forecast" class="forecast">
+                <div class="forecast-time">
+                    Soon
+                </div>
+                <div class="forecast-icon">
+                    <img src="./icons/clear.png" >
+                </div>
+                <div class="forecast-temp">
+                    21 °C
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-time">
+                    Later
+                </div>
+                <div class="forecast-icon">
+                    Icon
+                </div>
+                <div class="forecast-temp">
+                    Temp
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-time">
+                    Tomorrow
+                </div>
+                <div class="forecast-icon">
+                    Icon
+                </div>
+                <div class="forecast-temp">
+                    Temp
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-time">
+                    36 Hrs
+                </div>
+                <div class="forecast-icon">
+                    Icon
+                </div>
+                <div class="forecast-temp">
+                    Temp
+                </div>
+            </div>
+            <div class="forecast">
+                <div class="forecast-time">
+                    48 Hrs
+                </div>
+                <div class="forecast-icon">
+                    Icon
+                </div>
+                <div class="forecast-temp">
+                    Temp
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -70,6 +124,28 @@
 
 <!--
     <a target="_blank" href="https://icons8.com/icon/51463/night">Night</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51450/rain-cloud">Rain Cloud</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51499/cloud-lightning">Cloud Lightning</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51467/rainy-weather">Rainy Weather</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51469/snow">Snow</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51507/haze">Haze</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51503/dust">Dust</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51475/tornado">Tornado</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/GAUmg88zKDEA/wind">Wind</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/41620/sun">Sun</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/51462/partly-cloudy-day">Partly Cloudy Day</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
+    <a target="_blank" href="https://icons8.com/icon/41729/enter">Enter</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
     https://icons8.com/icon/set/weather/ultraviolet
 !-->

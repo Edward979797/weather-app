@@ -1,5 +1,5 @@
 html, body {
-    font-family: 'PT Serif';
+    font-family: 'sans serif';
     height: 100%;
     margin: 0;
     overflow: scroll;
@@ -24,6 +24,22 @@ html, body {
     justify-content: center;
 }
 
+.search-section button {
+    background-color: rgb(89, 67, 231);
+    border-radius: 100px;
+    color: white;
+}
+
+#search {
+    border-radius: 10px;
+    color: darkblue;
+    font-size: 18px;
+    height: 25px;
+    letter-spacing: 2px;
+    padding: 3px;
+    text-align: center;
+}
+
 .current-weather {
     align-items: center;
     background-color: white;
@@ -33,23 +49,33 @@ html, body {
 }
 
 .current-weather-name {
+    box-sizing: border-box;
     color: rgb(89, 67, 231);
     font-size: 50px;
     letter-spacing: 2px;
     margin-top: 50px;
+    text-align: center;
+    width: 90%;
 }
 
 .current-weather-icon {
     align-items: center;
     display: flex;
-    height: 400px;
+    height: 250px;
     justify-content: center;
 }
 
 .current-weather-icon img {
     height: 120px;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     width: 120px;
+}
+
+.current-weather-desc {
+    color:rgb(100, 83, 216);
+    font-size: 22px;
+    font-style: italic;
+    height: 80px;
 }
 
 .current-weather-stats {
@@ -82,10 +108,51 @@ html, body {
     color: rgb(107, 161, 214);
 }
 
-.forecast {
+.forecast-section {
     align-items: center;
-    background-color: blueviolet;
-    min-height: 300px;
+    background-color: rgb(201, 226, 248);
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(2, 150px);
     justify-content: center;
+    min-height: fit-content;
+    padding: 20px;
+    padding-bottom: 45px;
+    padding-top: 45px;
 }
 
+.forecast {
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    color: rgb(47, 105, 163);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.forecast-time {
+    font-size: 20px;
+}
+
+.forecast-icon {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.forecast-icon img {
+    height: 60px;
+    width: 60px;
+}
+
+#soon-forecast {
+    grid-column-end: 3;
+    grid-column-start: 1;
+}
+
+#soon-forecast > .forecast-time {
+    font-size: 26px;
+    letter-spacing: 5px;
+}
