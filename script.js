@@ -4,10 +4,39 @@ const btn = document.querySelector('button');
 btn.addEventListener('click', () => {
     try {
         retrieveWeather(search.value);
+        retrieveForecast(search.value);
     } catch (error) {
         console.log(error);
     }
 });
+
+const unitsBtn = document.querySelector('#switch-units-btn');
+
+unitsBtn.addEventListener('click', () => {
+    if (unitsBtn.textContent == '°C') {
+        unitsBtn.textContent = '°F'
+    } else {
+        unitsBtn.textContent = '°C'
+    }
+   /*const currentTemp = document.querySelector('.stats-temp-number');
+   const currentFeelsLike = document.querySelector('.stats-feels-like-number');
+   const forecastTemps = document.querySelectorAll('.forecast-temp');
+
+   if (unitsBtn.textContent === '°F') {
+       currentTemp.textContent = CToF(currentTemp.textContent.replace('°C', '')) + '°F';
+       currentFeelsLike.textContent = CToF(currentFeelsLike.textContent.replace('°C', '')) + '°F';
+       forecastTemps.forEach(temp => {
+           temp.textContent = CToF(temp.textContent.replace('°C', '')) + '°F';
+       })
+       unitsBtn.textContent = '°C';
+   } else if (unitsBtn.textContent === '°C') {
+        currentTemp.textContent = FToC(currentTemp.textContent.replace('°F', '')) + '°C';
+        currentFeelsLike.textContent = FToC(currentFeelsLike.textContent.replace('°F', '')) + '°C';
+        forecastTemps.forEach(temp => {
+            temp.textContent = FToC(temp.textContent.replace('°F', '')) + '°C';
+        })
+        unitsBtn.textContent = '°F';*/
+   })
 
 async function retrieveWeather(city='Toronto') {
     try {
@@ -15,8 +44,7 @@ async function retrieveWeather(city='Toronto') {
 
         const data = await response.json();
 
-        console.log(data);
-        populate(data.name, data.main.temp, data.main.feels_like, data.wind.speed, data.main.pressure, data.weather[0].description, data.weather[0].main);
+        populateCurrent(data.name, data.main.temp, data.main.feels_like, data.wind.speed, data.main.pressure, data.weather[0].description, data.weather[0].main);
     } catch (error) {
         console.log(error);
     }
@@ -29,21 +57,31 @@ async function retrieveForecast(city="Toronto") {
 
         const data = await response.json();
 
-        console.log(data);
+        populateForecast(data.list[1].main.temp, data.list[1].weather[0].main, 'soon');
+        populateForecast(data.list[3].main.temp, data.list[3].weather[0].main, 'later');
+        populateForecast(data.list[7].main.temp, data.list[7].weather[0].main, 'tmrw');
+        populateForecast(data.list[15].main.temp, data.list[15].weather[0].main, 'two-days');
+        populateForecast(data.list[23].main.temp, data.list[23].weather[0].main, 'three-days');
+
     } catch(error) {
         console.log(error);
     }
 }
 
-function populate(name, temp, feels, wind, pressure, desc, type) {
+function populateCurrent(name, temp, feels, wind, pressure, desc, type) {
     const cityName = document.querySelector('.current-weather-name');
     cityName.textContent = name;
 
     const tempNumber = document.querySelector('.stats-temp-number');
-    tempNumber.textContent = getCelsius(temp) + '°C';
-
     const feelsLike = document.querySelector('.stats-feels-like-number');
-    feelsLike.textContent = getCelsius(feels) + '°C';
+
+    if (unitsBtn.textContent == '°C') {
+        tempNumber.textContent = getCelsius(temp) + '°C';
+        feelsLike.textContent = getCelsius(feels) + '°C';
+    } else if (unitsBtn.textContent == '°F') {
+        tempNumber.textContent = getFahrenheit(temp) + '°F';
+        feelsLike.textContent = getFahrenheit(feels) + '°F';
+    }
 
     const windNumber = document.querySelector('.stats-wind-number');
     windNumber.textContent = getKm(wind) + ' km/h';
@@ -54,48 +92,51 @@ function populate(name, temp, feels, wind, pressure, desc, type) {
     const weatherDesc = document.querySelector('.current-weather-desc');
     weatherDesc.textContent = desc;
 
-    determineIcon(type);
+    const icon = document.querySelector('#icon-image');
+    icon.src = determineIcon(type);
+}
+
+function populateForecast(temp, type, time) {
+    
+    const forecastIcon = document.querySelector(`#${time}-forecast > .forecast-icon img`);
+    forecastIcon.src = determineIcon(type);
+
+    const forecastTemp = document.querySelector(`#${time}-forecast > .forecast-temp`);
+    
+    if (unitsBtn.textContent == '°C') {
+        forecastTemp.textContent = getCelsius(temp) + '°C';
+    } else if (unitsBtn.textContent == '°F') {
+        forecastTemp.textContent = getFahrenheit(temp) + '°F';
+    }
 }
 
 function determineIcon(type) {
-    const icon = document.querySelector('#icon-image');
-
     switch(type) {
         case 'Thunderstorm':
-            icon.src = './icons/thunderstorm.png';
-            break;
+            return './icons/thunderstorm.png';
         case 'Drizzle':
-            icon.src = './icons/drizzle.png';
-            break;
+            return './icons/drizzle.png';
         case 'Rain':
-            icon.src = './icons/rain.png';
-            break;
+            return './icons/rain.png';
         case 'Snow':
-            icon.src = './icons/snow.png';
-            break;
+            return './icons/snow.png';
         case 'Mist':
         case 'Smoke':
         case 'Haze':
         case 'Fog':
-            icon.src = './icons/haze.png';
-            break;
+            return './icons/haze.png';
         case 'Dust':
         case 'Sand':
         case 'Ash':
-            icon.src = './icons/dust.png';
-            break;
+            return './icons/dust.png';
         case 'Squall':
-            icon.src = './icons/wind.png';
-            break;
+            return './icons/wind.png';
         case 'Tornado':
-            icon.src = './icons/tornado.png';
-            break;
+            return './icons/tornado.png';
         case 'Clear':
-            icon.src = './icons/clear.png';
-            break;
+            return './icons/clear.png';
         case 'Clouds':
-            icon.src = './icons/cloudy.png';
-            break;
+            return './icons/cloudy.png';
     }
 }
 
@@ -103,12 +144,8 @@ function getCelsius(temp) {
     return Math.floor(temp - 273.15);
 }
 
-function CToF(temp) {
-    return Math.floor((temp * (9 / 5)) + 32);
-}
-
-function FToC(temp) {
-    return Math.floor((temp - 32) * (5 / 9));
+function getFahrenheit(temp) {
+    return Math.floor(temp * 9 / 5 - 459.67);
 }
 
 function getKm(wind) {
